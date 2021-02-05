@@ -87,5 +87,5 @@ def create():
 
 @main.route('/guest/<guest_id>')
 def guest_detail(guest_id):
-    # TODO: Get the guest with the given id and send to the template
-    return render_template('guest_detail.html')
+    guest = Guest.query.get(guest_id)
+    return render_template('guest_detail.html', guest = guest)
