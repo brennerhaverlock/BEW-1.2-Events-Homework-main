@@ -50,7 +50,6 @@ def rsvp(event_id):
 
         db.session.add(guest)
         db.session.commit()
-        pass
     
     flash('You have successfully RSVP\'d! See you there!')
     return redirect(url_for('main.event_detail', event_id=event_id))
@@ -74,6 +73,11 @@ def create():
 
         # TODO: Create a new event with the given title, description, & 
         # datetime, then add and commit to the database
+
+        event = Event(title=new_event_title, description=new_event_description, date_and_time=date_and_time)
+
+        db.session.add(event)
+        db.session.commit()
 
         flash('Event created.')
         return redirect(url_for('main.index'))
